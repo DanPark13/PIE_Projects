@@ -5,21 +5,14 @@
 #define RED_LED 5
 #define YELLOW_LED 7
 #define BLUE_LED 9
-
-/*
- * Define elements for Thermal
- */
-int pot_pin = A0;
-int output;
-int led_value;
-
+ 
 /*
  * current_state variables
  */
  int current_state = 0; 
  int past_state = 0;
  int button_state = 0;
-
+ 
 void setup() {
   /*
    * Button as input
@@ -31,16 +24,14 @@ void setup() {
   pinMode(YELLOW_LED, OUTPUT);
   pinMode(BLUE_LED, OUTPUT);
   Serial.println("Setup Completed");
-
+ 
   digitalWrite(RED_LED, LOW);
   digitalWrite(YELLOW_LED, LOW);
   digitalWrite(BLUE_LED, LOW);
   Serial.println("All Power Off");
 }
-
+ 
 void loop() {
-  // read the analog state for the thermal sensor
-  output = analogRead(pot_pin);
   button_state = digitalRead(BUTTON);
   if(button_state == 0){
     delay(50);
